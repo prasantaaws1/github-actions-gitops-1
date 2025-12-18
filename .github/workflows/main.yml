@@ -28,3 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install flake8
+      # Test the Code
+      - name: Run Linting tests
+        run: |
+          flake8 --ignore=E501,F401 .
