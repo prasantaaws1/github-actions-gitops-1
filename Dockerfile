@@ -1,20 +1,13 @@
-FROM python:3.14.0a3-alpine3.21
+FROM eclipse-temurin:17-jdk-alpine
+    
+EXPOSE 8080
 
-# Set the working directory
-WORKDIR /app
+RUN ls 
 
-# Copy the current directory contents into the container at /app
-COPY . . 
+ENV APP_HOME /usr/src/app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+COPY app/*.jar $APP_HOME/app.jar
 
-#Expose the port
-EXPOSE 5000
+WORKDIR $APP_HOME
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
-
-
-
-
+CMD ["java", "-jar", "app.jar"]
