@@ -1,0 +1,17 @@
+name: Test and Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    #Setting up environment
+      - name: Checkout code
+        uses: actions/checkout@v2
